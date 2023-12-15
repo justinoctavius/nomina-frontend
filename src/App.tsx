@@ -1,4 +1,5 @@
 import { DataTable } from './components/data-table/data-table';
+import { NavigationSection } from './components/navigation-section';
 import { columns } from './components/position-table/columns';
 
 function getData() {
@@ -18,9 +19,14 @@ function App() {
   const data = getData();
 
   return (
-    <div className="p-4">
-      <DataTable columns={columns} data={data} />
-    </div>
+    <main className="flex">
+      <div>
+        <NavigationSection />
+      </div>
+      <div className="p-4 w-full" style={{ border: '1px solid' }}>
+        <DataTable columns={columns} data={data} />
+      </div>
+    </main>
   );
 }
 
