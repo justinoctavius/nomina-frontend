@@ -27,7 +27,7 @@ export const Employees = () => {
   return (
     <div className="p-4">
       <Form title="Agregar nuevo empleado">
-        <div className="flex gap-4 p-4">
+        <div className="flex gap-4 p-4 flex-wrap">
           <div className="flex flex-col gap-2">
             <Input
               type="text"
