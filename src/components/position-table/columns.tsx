@@ -1,5 +1,7 @@
+import { useMemo } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { ActionColumnItem } from '../action-column-item';
+import { formatNumber } from '../../utils/numbers';
 
 export type Position = {
   id: string;
@@ -22,19 +24,33 @@ export const positionColumns: ColumnDef<Position>[] = [
     header: 'Nombre',
   },
   {
+    accessorKey: 'salaryPerHour',
+    header: 'Salario por hora',
+    cell: ({ row }) => {
+      const salaryPerHour: number = row.getValue('salaryPerHour');
+      return <span>RD$ {formatNumber(salaryPerHour)}</span>;
+    },
+  },
+  {
     accessorKey: 'description',
     header: 'Descripcion',
   },
-  {
-    accessorKey: 'salaryPerHour',
-    header: 'Salario por hora',
-  },
-  {
-    accessorKey: 'id',
-    header: 'Acciones',
-    cell: ({ row }) => {
-      const id = row.getValue('id');
-      return <ActionColumnItem onDelete={() => console.log(id)} />;
-    },
-  },
 ];
+
+export const useGetPositionsColumn = (actions: {
+  onDelete: (id: string) => void;
+}) => {
+  const actionColumn: ColumnDef<Position> = useMemo(
+    () => ({
+      accessorKey: 'id',
+      header: 'Acciones',
+      cell: ({ row }) => {
+        const id: string = row.getValue('id');
+        return <ActionColumnItem onDelete={() => actions.onDelete(id)} />;
+      },
+    }),
+    []
+  );
+
+  return [...positionColumns, actionColumn];
+};
