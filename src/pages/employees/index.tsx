@@ -1,4 +1,6 @@
 import { Button } from '../../components/button';
+import { Combobox } from '../../components/combo-box';
+import { DepartmentComboBox } from '../../components/department-combobox';
 import { EmployeeTable } from '../../components/employee-table';
 import { Form } from '../../components/form';
 import { Input } from '../../components/input';
@@ -39,6 +41,9 @@ export const Employees = () => {
               id="email"
               placeholder="Correo electrónico"
             />
+          </div>
+          <div className="flex flex-col gap-2">
+            <DepartmentComboBox onSelect={() => {}} selected="" />
           </div>
           <div className="flex flex-col gap-2">
             <Button type="submit">Agregar</Button>
