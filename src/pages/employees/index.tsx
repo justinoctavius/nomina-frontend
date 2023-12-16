@@ -1,4 +1,5 @@
 import { Button } from '../../components/button';
+import { EmployeeTable } from '../../components/employee-table';
 import { Form } from '../../components/form';
 import { Input } from '../../components/input';
 
@@ -44,7 +45,9 @@ export const Employees = () => {
           </div>
         </div>
       </Form>
-      <div></div>
+      <div className="mt-4 shadow-md p-4">
+        <EmployeeTable />
+      </div>
     </div>
   );
 };

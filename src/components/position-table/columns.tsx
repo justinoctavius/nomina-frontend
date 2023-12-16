@@ -2,13 +2,7 @@ import { useMemo } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { ActionColumnItem } from '../action-column-item';
 import { formatNumber } from '../../utils/numbers';
-
-export type Position = {
-  id: string;
-  salaryPerHour: number;
-  name: string;
-  description?: string;
-};
+import { Position } from '../../services/positions/types';
 
 export const positionColumns: ColumnDef<Position>[] = [
   {

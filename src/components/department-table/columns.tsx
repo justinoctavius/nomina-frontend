@@ -1,14 +1,9 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { ActionColumnItem } from '../action-column-item';
 import { useMemo } from 'react';
+import { Department } from '../../services/departments/types';
 
-export type Position = {
-  id: string;
-  name: string;
-  description?: string;
-};
-
-export const departmentColumns: ColumnDef<Position>[] = [
+export const departmentColumns: ColumnDef<Department>[] = [
   {
     accessorKey: 'id',
     header: 'ID',
@@ -30,7 +25,7 @@ export const departmentColumns: ColumnDef<Position>[] = [
 export const useGetDepartmentsColumn = (actions: {
   onDelete: (id: string) => void;
 }) => {
-  const actionColumn: ColumnDef<Position> = useMemo(
+  const actionColumn: ColumnDef<Department> = useMemo(
     () => ({
       accessorKey: 'id',
       header: 'Acciones',
