@@ -1,5 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { ActionColumnItem } from '../action-column-item';
+import { useMemo } from 'react';
 
 export type Position = {
   id: string;
@@ -24,12 +25,22 @@ export const departmentColumns: ColumnDef<Position>[] = [
     accessorKey: 'description',
     header: 'Descripcion',
   },
-  {
-    accessorKey: 'id',
-    header: 'Acciones',
-    cell: ({ row }) => {
-      const id = row.getValue('id');
-      return <ActionColumnItem onDelete={() => console.log(id)} />;
-    },
-  },
 ];
+
+export const useGetDepartmentsColumn = (actions: {
+  onDelete: (id: string) => void;
+}) => {
+  const actionColumn: ColumnDef<Position> = useMemo(
+    () => ({
+      accessorKey: 'id',
+      header: 'Acciones',
+      cell: ({ row }) => {
+        const id: string = row.getValue('id');
+        return <ActionColumnItem onDelete={() => actions.onDelete(id)} />;
+      },
+    }),
+    []
+  );
+
+  return [...departmentColumns, actionColumn];
+};

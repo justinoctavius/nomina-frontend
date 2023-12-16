@@ -1,7 +1,7 @@
 import { httpClient } from '../../utils/http-client';
 import { CreateDepartmentDto, Department } from './types';
 
-export const getDepartments = async (): Promise<Department> => {
+export const getDepartments = async (): Promise<Department[]> => {
   const response = await httpClient.get('/departments');
   return response.data;
 };
