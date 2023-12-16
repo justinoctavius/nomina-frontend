@@ -28,6 +28,12 @@ export const usePositionForm = () => {
     return true;
   };
 
+  const resetForm = () => {
+    setName('');
+    setDescription('');
+    setSalaryPerHour(0);
+  };
+
   const onAddPosition = async () => {
     const isValid = validateForm();
     if (!isValid) {
@@ -38,6 +44,8 @@ export const usePositionForm = () => {
       description,
       salaryPerHour,
     });
+
+    resetForm();
   };
 
   return {

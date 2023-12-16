@@ -21,6 +21,11 @@ export const useDepartmentsForm = () => {
     return true;
   };
 
+  const resetForm = () => {
+    setName('');
+    setDescription('');
+  };
+
   const onAddDepartment = async () => {
     const isValid = validateForm();
     if (!isValid) {
@@ -30,6 +35,7 @@ export const useDepartmentsForm = () => {
       name,
       description,
     });
+    resetForm();
   };
 
   return {
