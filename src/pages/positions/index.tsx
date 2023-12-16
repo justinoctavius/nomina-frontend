@@ -1,6 +1,7 @@
 import { Button } from '../../components/button';
 import { Form } from '../../components/form';
 import { Input } from '../../components/input';
+import { PositionTable } from '../../components/position-table';
 
 export const Positions = () => {
   return (
@@ -31,7 +32,9 @@ export const Positions = () => {
           </div>
         </div>
       </Form>
-      <div></div>
+      <div className="mt-4 shadow-md p-4">
+        <PositionTable />
+      </div>
     </div>
   );
 };

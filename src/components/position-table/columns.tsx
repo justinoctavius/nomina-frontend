@@ -1,4 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table';
+import { ActionColumnItem } from '../action-column-item';
 
 export type Position = {
   id: string;
@@ -7,10 +8,14 @@ export type Position = {
   description?: string;
 };
 
-export const columns: ColumnDef<Position>[] = [
+export const positionColumns: ColumnDef<Position>[] = [
   {
-    accessorKey: 'salaryPerHour',
-    header: 'Salario por hora',
+    accessorKey: 'id',
+    header: 'ID',
+    cell: ({ row }) => {
+      const id: string = row.getValue('id');
+      return <span>{id.slice(0, 8)}...</span>;
+    },
   },
   {
     accessorKey: 'name',
@@ -19,5 +24,17 @@ export const columns: ColumnDef<Position>[] = [
   {
     accessorKey: 'description',
     header: 'Descripcion',
+  },
+  {
+    accessorKey: 'salaryPerHour',
+    header: 'Salario por hora',
+  },
+  {
+    accessorKey: 'id',
+    header: 'Acciones',
+    cell: ({ row }) => {
+      const id = row.getValue('id');
+      return <ActionColumnItem onDelete={() => console.log(id)} />;
+    },
   },
 ];
