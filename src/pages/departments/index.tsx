@@ -1,4 +1,5 @@
 import { Button } from '../../components/button';
+import { DepartmentTable } from '../../components/department-table';
 import { Form } from '../../components/form';
 import { Input } from '../../components/input';
 
@@ -23,7 +24,9 @@ export const Departments = () => {
           </div>
         </div>
       </Form>
-      <div></div>
+      <div className="mt-4 shadow-md p-4">
+        <DepartmentTable />
+      </div>
     </div>
   );
 };
