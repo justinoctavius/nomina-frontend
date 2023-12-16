@@ -1,13 +1,13 @@
-import { useDeletePosition } from '../../hooks/mutations/positions/useDeletePosition';
+import { useDeleteEmployee } from '../../hooks/mutations/employees/useDeleteDepartment';
 import { useGetEmployees } from '../../hooks/queries/employees/useGetEmployees';
 import { DataTable } from '../data-table/data-table';
 import { useGetEmployeesColumn } from './columns';
 
 export const EmployeeTable = () => {
   const { data, isLoading } = useGetEmployees();
-  const { deletePositionMutation } = useDeletePosition();
+  const { deleteEmployeeMutation } = useDeleteEmployee();
   const employeesColumns = useGetEmployeesColumn({
-    onDelete: (id) => deletePositionMutation.mutateAsync(id),
+    onDelete: (id) => deleteEmployeeMutation.mutateAsync(id),
   });
 
   if (isLoading) return <div>Loading...</div>;
